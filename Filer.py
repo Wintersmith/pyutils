@@ -1,3 +1,9 @@
+"""
+    Filer.py - A lib designed to make NetApp's SDK a bit more friendly.
+
+    Requires Python 3 ( I used @functools.lru_cache( maxsize=32 ) to provide a cache so that this function wouldn't be a heavy load on the filer, as it's used as part of a web app )
+"""
+
 from __future__ import print_function
 
 import re, sys, logging, functools
