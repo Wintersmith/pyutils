@@ -7,7 +7,7 @@
 import cgi, os, Cookie, time
 
 # Custom Imports
-from PlusNet import DBStorage, Utils
+import DBStorage, Utils
 
 htmlStart = """Content-type: text/html
 

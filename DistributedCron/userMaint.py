@@ -11,7 +11,8 @@ try:
 except ImportError:
     import md5, sha
 
-from PlusNet import DBStorage, Utils
+
+import DBStorage, Utils
 
 def addUser( configSettings, userName, passWord ):
     dbInst = DBStorage.DBStorage( "Cron", configSettings[ 'dbhost' ], configSettings[ 'dbtype' ], 

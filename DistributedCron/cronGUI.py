@@ -12,7 +12,7 @@ class CronGUI( Tkinter.Frame ):
 
     def __init__( self, master=None ):
         Tkinter.Frame.__init__( self, master )
-        self._dbInst = DBStorage.DBStorage( "Cron", "localhost", "MySQL", userName="admindb", passWord="Frodo" )
+        self._dbInst = DBStorage.DBStorage( "Cron", "localhost", "MySQL", userName="", passWord="" )
         self._dbInst.dbOpen()
         self.grid( )
         self.createWidgets( )
