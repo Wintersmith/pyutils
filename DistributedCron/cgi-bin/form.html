@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+    <TITLE>Distributed Cron Maintenance</TITLE>
+    </HEAD>
+    <BODY
+    <FORM ACTION="/cgi-bin/crona.py" METHOD="POST">
+        <table style="text-align: left; width: 100;" border="0" cellpadding="2" cellspacing="2">
+        <tbody>
+        <tr>
+            <td>
+                <al-select NAME="cronHost" optionexpr="hostList" />
+            </td>
+            <td>
+                <al-input NAME="listCron" TYPE="submit" VALUE="List Cron Entries"><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Minutes: 
+            </td>
+            <td>
+                <al-input TYPE="text" NAME="cronMin" VALUE="*" ><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Hours: 
+            </td>
+            <td>
+                <al-input TYPE="text" NAME="cronHours" VALUE="*" ><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Day(s) Of Month: 
+            </td>
+            <td>
+                <al-input TYPE="text" NAME="cronDOM" VALUE="*"  ><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Month: 
+            </td>
+            <td>
+                <al-input TYPE="text" NAME="cronMonth" VALUE="*" ><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Day Of Week: 
+            </td>
+            <td>
+                <al-input TYPE="text" NAME="cronDOW" VALUE="*" ><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter Command Line: 
+            </td>
+            <td>
+                <al-input TYPE="text" NAME="cronCLI" ><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Enter User ID: 
+            </td>
+            <td>
+                <al-input TYPE="text" NAME="cronUID" VALUE="0" ><BR>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <al-input NAME="submit" TYPE="submit" VALUE="Submit Cron Entry">
+            </td>
+            <td>
+                <al-input NAME="reset" TYPE="reset"  VALUE="Reset Fields To Default"><BR>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    </FORM>
+    <al-include name="form-display.html" >
+    </BODY>
+</HTML>
