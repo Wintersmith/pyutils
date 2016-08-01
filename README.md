@@ -10,6 +10,6 @@ With the odd exception ( Filer.py, for example ), Py3 support is non-existent ( 
  - OVM.py - An interface to the Oracle VM Manager's API, currently shows VM's and their statuses, and jobs running on the Manager.
  - VMware.py -  An interface to ESXi's API, currently lists VM's, datastores, and shows alarms.
  - DistributedCron - A distributed cron, that utilises a DB to provide failover / load cron's.
- - archiveFS.py - Designed to clean up / store Concurrent Request files created on ERP systems.
+ - archiveFS.py - Designed to clean up / store Concurrent Request files created on ERP systems.  Creates compressed tar's of log / out files.
 
  Disclaimer: I've made these scripts available in case someone may find them useful ( I'd be interested to hear of any improvements ).  I make no guarentees....
