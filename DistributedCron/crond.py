@@ -19,7 +19,7 @@ import getopt
 
 # Custom imports
 from Cron import CronLib
-from PlusNet import Utils, Platform
+import Utils, Platform
 
 def main( argv=None ):
     if argv is None:

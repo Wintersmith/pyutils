@@ -27,7 +27,7 @@ except:
     import StringIO as StringIO
     
 # Custom imports
-from PlusNet import Utils, DBStorage, ThreadLib
+import Utils, DBStorage, ThreadLib
 
 class CronError( Exception ):
     
@@ -82,7 +82,7 @@ class Cron( object ):
         else:
             self._logFacility.debug( "Cron Entries Refresh Failed Miserably.  Using Cached Entries." )
             mailMessage = "For some reason, the refresh of the cron entries failed.  Please check the logs."
-            Utils.mailError( "relay.plus.net", "cronDaemon@%s" % Utils.returnHostName, "jabel@plus.net", "Alert.  Failed To Refresh Cron", mailMessage )
+            Utils.mailError( "mailhost", "cronDaemon@%s" % Utils.returnHostName, "fake@mail.com", "Alert.  Failed To Refresh Cron", mailMessage )
             
     def run( self ):
         loadStatus, localEntries = self._loadCron()
@@ -386,7 +386,7 @@ class CGIHandler( Utils.WebHandler ):
     cgi_directories = [ "/cgi-bin" ]
     httpRoot = None
     webPort = 8888
-    server_version = "PlusNet-CGI/0.1"
+    server_version = "JA-CGI/0.1"
     
     indexPage = """<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
     <html>
