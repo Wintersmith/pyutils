@@ -275,7 +275,5 @@ class ByteToASCII( object ):
 if __name__ == "__main__":
     print "Starting DNS Test"
     Lookup = DNSClient( ("10.253.65.10","10.253.65.14") )
-    print Lookup.Query("pa.press.net", recordType = "MX")
-    print Lookup.Query("mailhost.howden.press.net")
-    print Lookup.Query("pasportfeatures.howden.press.net", recordType = "CNAME")
-    print Lookup.Query("lestat.howden.press.net")
+    print Lookup.Query("mailhost")
+    print Lookup.Query("lestat")
