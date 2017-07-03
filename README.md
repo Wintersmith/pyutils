@@ -11,5 +11,6 @@ With the odd exception ( Filer.py, for example ), Py3 support is non-existent ( 
  - VMware.py -  An interface to ESXi's API, currently lists VM's, datastores, and shows alarms.
  - DistributedCron - A distributed cron, that utilises a DB to provide failover / load cron's.
  - archiveFS.py - Designed to clean up / store Concurrent Request files created on ERP systems.  Creates compressed tar's of log / out files.
+ - parseDayOne.py - parses the JSON backup from DayOne, and creates a directory for each entry, and populates it with the text, and optionally, photos, weather, location ( weather / location are raw dicts, for now )
 
  Disclaimer: I've made these scripts available in case someone may find them useful ( I'd be interested to hear of any improvements ).  I make no guarentees....
