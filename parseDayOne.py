@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
 import os
 import sys
 import json
@@ -7,13 +10,16 @@ from shutil import copy
 baseDir = os.getcwd()
 journalJSON = os.path.join( baseDir, 'Journal.json' )
 photosDir = os.path.join( baseDir, 'photos' )
-entryPoints = [ 'weather', 'location', 'text' ]
+entryPoints = [ 'weather', 'location', 'text', 'userActivity' ]
 
 def writeEntry( journalEntry ):
     entryDate = datetime.strptime( journalEntry[ 'creationDate' ], '%Y-%m-%dT%H:%M:%SZ' )
     entryDir = os.path.join( baseDir, entryDate.strftime( '%Y/%m/%d/%H-%M' ) )
     try:
-        os.makedirs( entryDir, exist_ok = True )
+        try:
+            os.makedirs( entryDir )
+        except Exception:
+            pass
         for indivSection in entryPoints:
             if indivSection in journalEntry:
                 writeFile( os.path.join( entryDir, indivSection ), journalEntry[ indivSection ] )
