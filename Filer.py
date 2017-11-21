@@ -141,7 +141,7 @@ class NetApp( object ):
         if self._filerConn is None:
             return False
             
-    def getLunPath( self, volName ):
+    def getLunPath( self, volName, indivVol ):
         """
             getLunPath - this function sucks, the idea was to return only the luns for the given volume, but the call to lun-list-info kept erroring saying volume-name was invalid / unexpected.
         """
@@ -159,7 +159,8 @@ class NetApp( object ):
             
         for indivLun in naReturn.child_get( 'luns' ).children_get():
             indivPath = indivLun.child_get_string( 'path' )
-            reMatch = re.search( partPath, indivPath )
+            self._logFacility.debug( "Found Lun In Volune, %s" % indivpath)
+            reMatch = re.search( indivVol, indivPath )
             if reMatch:
                 return indivPath
                 
@@ -173,11 +174,14 @@ class NetApp( object ):
         self._logFacility.debug( "About to lun-map, args - %s / %s / %s" % ( fcName, iGroups, str( lunID) ) )
         lunCmd = NaElement( "lun-map" )
         for iGroup in iGroups:
+            self._logFacility.debug( "Adding %s To iGroup" % iGroup )
             lunCmd.child_add_string( "initiator-group", iGroup )
+            self._logFacility.debug( "Adding %s To LunID" % lunID )
             lunCmd.child_add_string( "lun-id", lunID )
+            self._logFacility.debug( "Adding %s To Path" % fcName )
             lunCmd.child_add_string( "path", fcName )
         naReturn = self._filerConn.invoke_elem( lunCmd )
-        if naReturn.results_status == "failed":
+        if naReturn.results_status() == "failed":
             self._logFacility.error( "Failed to map lun %s to %s with id %s, %s" % ( fcName, iGroups, lunID, naReturn.results_reason() ) )
             return False
 
@@ -185,7 +189,8 @@ class NetApp( object ):
         lunCmd = NaElement( "lun-online" )
         lunCmd.child_add_string( "path", fcName )
         naReturn = self._filerConn.invoke_elem( lunCmd )
-        if naReturn.results_status == "failed":
+        self._logFacility.error( "Filer Return, %s " % naReturn.results_status() )
+        if naReturn.results_status() == "failed":
             self._logFacility.error( "Unable to online lun %s, %s" % ( fcName, naReturn.results_reason() ) )
             return False
             
